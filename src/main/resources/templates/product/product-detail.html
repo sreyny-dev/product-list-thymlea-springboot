@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Detail</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .page-title{
+            text-align: center;
+            margin-top: 20px;
+        }
+        .page-title:hover{
+            color:#04AA6D;
+        }
+        .card{
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            border-radius: 10px;
+            padding: 10px;
+        }
+        .product-image{
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid px-0">
+    <nav class="navbar bg-success">
+        <span class="navbar-brand mb-0 h1">CSTAD</span>
+    </nav>
+</div>
+<h1 class="page-title">Product Detail Page</h1>
+
+<div class="container">
+    <div class="col-md-4 mb-4">
+        <div class="card">
+            <img th:src="@{/img/{image}(image=${product.imgPath})}" alt="product-image" class="product-image">
+            <p><strong>ID:</strong> <span th:text="${product.id}"></span></p>
+            <p><strong>Price:</strong> $<span th:text="${product.price}"></span></p>
+            <p><strong>Description:</strong> <span th:text="${product.description}"></span></p>
+            <p><strong>Status:</strong> <span th:text="${product.status}"></span></p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

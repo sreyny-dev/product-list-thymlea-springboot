@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Page</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        a{
+            text-decoration: none;
+            color: black;
+        }
+        a:hover{
+            text-decoration: none;
+            color: blue;
+        }
+        .card{
+            border: 1px solid #ccc;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transfrom 0.2s;
+            border-radius: 10px;
+        }
+        .card-deck{
+            margin-top: 30px;
+        }
+        .card:hover{
+            transform: scale(1.05);
+        }
+        .card-title{
+            color:#04AA6D;
+            font-weight:bold;
+        }
+        .container{
+            margin-top:30px;
+        }
+        .add-link{
+            background-color: #04AA6D;
+            border:none;
+            display: inline-block;
+            color: black;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin-top:10px;
+        }
+        .buy-link{
+            background-color: #04AA6D;
+            display:inline-block;
+            border:none;
+            color: black;
+            padding: 10px 15px;
+            border-radius: 5px;
+            float:right;
+            margin-top:10px
+        }
+        .product-img{
+            width:100% ;
+            height: auto;
+        }
+        .my-3:hover{
+            color:#04AA6D;
+        }
+        .navbar-brand{
+            color:white;
+        }
+        .navbar{
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="container-fluid px-0 mb-3">
+    <nav class="navbar bg-success ">
+        <span class="navbar-brand mb-0 h1">CSTAD</span>
+    </nav>
+</div>
+<div class="container">
+    <div class="row ">
+        <div class="col-sm-8 m-auto">
+            <!-- SIMPLE SLIDER -->
+            <div id="slider1" class="carousel slide mb-5" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li class="active" data-target="#slider4" data-slide-to="0"></li>
+                    <li  data-target="#slider1" data-slide-to="1"></li>
+                    <li data-target="#slider1" data-slide-to="2"></li>
+                    <li  data-target="#slider1" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="carousel-item active" >
+                        <img th:src="@{img/ip12.png}" alt="First Slide" class="d-block img-fluid  ">
+                        <div class="carousel-caption d-none d-md-block"></div>
+                    </div>
+                    <div class="carousel-item">
+                        <img th:src="@{img/ip13.png}" alt="First Slide" class="d-block img-fluid  ">                    </div>
+                    <div class="carousel-item">
+                        <img th:src="@{img/ip14.png}" alt="First Slide" class="d-block img-fluid  ">                    </div>
+                    <div class="carousel-item">
+                        <img th:src="@{img/ip15pro.png}" alt="First Slide" class="d-block img-fluid  ">                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <h1 class="my-3 text-center">Product Page</h1>
+        <div class="row">
+                <div th:each="product: ${dataProducts}" class="col-sm-12 col-md-6 col-lg-4 mb-4">
+                    <a th:href="@{/product/{productId}/detail(productId=${product.id})}">
+                        <div class="card">
+                            <img th:src="@{img/{image}(image=${product.imgPath})}" alt="product-img" class="product-img" >
+                            <div class="card-body">
+                                <h5 class="card-title"><span th:text="${product.name}"></span></h5>
+                                <p class="card-text">ID: <span th:text="${product.id}"></span></p>
+                                <p class="card-text">Price: <span th:text="${product.price}"></span></p>
+                                <p class="card-text">Description: <span th:text="${product.description}"></span></p>
+                                <p class="card-text">Status: <span th:text="${product.status}"></span></p>
+                                <a href="#" class="add-link">Add to Cart</a>
+                                <a href="#" class="buy-link"> Buy</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+        </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+        crossorigin="anonymous"></script>
+<script>
+    $('.carousel').carousel({
+        interval: 1500,
+        keyboard:true,
+        pause:'hover',
+        warp:true
+    });
+</script>
+</body>
+</html>
